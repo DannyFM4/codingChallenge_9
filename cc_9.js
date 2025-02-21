@@ -50,3 +50,31 @@ const mgr1 = new Manager("John Smith", 201, "IT", 8000, 5);
 // the lines below run the methods used in the manager class and log the outputs in the console
 console.log(mgr1.getDetails());
 console.log(mgr1.calculateBonus());
+
+
+// Task 3: Creating a Company Class
+
+class Company { // these lines create a class called Company
+    constructor(name) {
+        this.name = name;
+        this.employees = []; // create an open array
+    }
+
+    addEmployee(employee) { // this method adds each employee to the employees array
+        this.employees.push(employee);
+    };
+
+    listEmployees() { // this method goes through each employee in the array and logs its details in the console
+        this.employees.forEach(employee => console.log(employee.getDetails()));
+    };
+};
+
+// adds a company named TechCorp
+const company = new Company("TechCorp");
+
+// adds an employee to the employees array
+company.addEmployee(emp1);
+company.addEmployee(mgr1);
+
+// runs the method using the employees already added to the class
+company.listEmployees();
