@@ -39,7 +39,11 @@ class Manager extends Employee {  // lines below create a class called manager, 
     };
 
     calculateBonus() { // creates a method inside the class that calculates the annual bonus for the manager
-        return this.calculateAnnualSalary() * .1;
+        return super.calculateAnnualSalary() * 0.1;
+    };
+
+    calculateAnnualSalary() { // this lines is for task 4, it allows for the calcAnnualSalary method to include a managers bonus
+        return super.calculateAnnualSalary() + this.calculateBonus();
     };
 
 };
@@ -67,6 +71,11 @@ class Company { // these lines create a class called Company
     listEmployees() { // this method goes through each employee in the array and logs its details in the console
         this.employees.forEach(employee => console.log(employee.getDetails()));
     };
+
+    // this line is for task 4
+    calculateTotalPayroll() { // this adds a method, to the class that calculates the total sum of the annual salaries
+        return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
+    };
 };
 
 // adds a company named TechCorp
@@ -78,3 +87,9 @@ company.addEmployee(mgr1);
 
 // runs the method using the employees already added to the class
 company.listEmployees();
+
+
+// Task 4: Implementing a Payroll System
+
+// runs and logs the method in the console
+console.log(company.calculateTotalPayroll());
