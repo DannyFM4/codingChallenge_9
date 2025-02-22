@@ -76,6 +76,13 @@ class Company { // these lines create a class called Company
     calculateTotalPayroll() { // this adds a method, to the class that calculates the total sum of the annual salaries
         return this.employees.reduce((total, employee) => total + employee.calculateAnnualSalary(), 0);
     };
+
+    promoteToManager(employee, teamSize) { // lines for task 5, creates a method in the class that promotes an employee to manager
+        const index = this.employees.indexOf(employee);
+        this.employees[index] = new Manager(employee.name, employee.id, employee.department, employee.salary, teamSize);
+            
+        
+    };
 };
 
 // adds a company named TechCorp
@@ -93,3 +100,10 @@ company.listEmployees();
 
 // runs and logs the method in the console
 console.log(company.calculateTotalPayroll());
+
+
+// Task 5: Implementing Promotions
+
+// promotes emp1 in to a manager
+company.promoteToManager(emp1, 3);
+company.listEmployees(); // logs the list of employee and managers in the console
